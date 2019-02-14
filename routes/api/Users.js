@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const bodyParser = require('body-parser')
+const jsonParser = bodyParser.json()
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 
@@ -14,7 +16,7 @@ router.get('/test', (req, res) => res.json({ msg: 'Users Works' }));
 // @route   GET api/users/register
 // @desc    Register user
 // @access  Public
-router.post('/register', (req, res) => {
+router.post('/register', jsonParser, (req, res) => {
   User.findOne({ email: req.body. email })
     .then(user => {
         if(user) {
@@ -46,5 +48,28 @@ router.post('/register', (req, res) => {
     });
 });
 
+// @route   GET api/users/login
+// @desc    login user/generate token
+// @access  Public
+router.post('/login', jsonParser, (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+
+    User.findOne({email})
+    .then(user => {
+        if (!user) {
+            return res.status(404).json({email: 'User not found'})
+        }
+
+        // Check Password
+        bcrypt.compare(password, user.password).then(isMatch => {
+            if(isMatch){
+                res.json({msg: 'success'});
+            } else {
+                return res.status(400).json({password: 'Password incorrect'});
+            }
+        });
+    });
+});
 
 module.exports = router;
