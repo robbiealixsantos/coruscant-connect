@@ -1,15 +1,6 @@
 img {
   width: 100%;
 }
-.aboutLanding {
-  position: relative;
-  background: url('./img/coruscant-main.png') no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  margin-top: -24px;
-  margin-bottom: -50px;
-}
 
 .landing {
   position: relative;
