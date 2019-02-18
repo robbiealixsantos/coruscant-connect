@@ -29,7 +29,7 @@ app.use(passport.initialize());
 require ('./config/passport')(passport);
 
 // Use Routes
-app.use('/api/user', users);
+app.use('/api/users', users);
 app.use('/api/profile', profiles);
 app.use('/api/post', posts);
 
