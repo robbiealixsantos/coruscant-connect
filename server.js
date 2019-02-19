@@ -9,12 +9,14 @@ const profiles = require('./routes/api/profiles');
 
 const app = express();
 
+require('dotenv').config()
+
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // DB Config
-const db = require('./config/keys').mongoURI;
+const db = process.env.REACT_APP_MONGO_URI
 
 // Connect to MongoDB
 mongoose
