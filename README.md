@@ -23,13 +23,13 @@ npm run client
 # Server runs on http://localhost:5000 and client on http://localhost:3000
 ```
 
-You will need to create a keys_dev.js in the server config folder with
+You will need to create a .env file in the root folder with
 
 ```
-module.exports = {
-  mongoURI: 'YOUR_OWN_MONGO_URI',
-  secretOrKey: 'YOUR_OWN_SECRET'
-};
+REACT_APP_MONGO_URI='YOUR_OWN_MONGO_URI'
+REACT_APP_SECRET_OR_KEY='YOUR_OWN_SECRET'
+REACT_APP_GITHUB_CLIENT_ID='YOUR_OWN_GITHUB_CLIENT_ID'
+REACT_APP_GITHUB_SECRET='YOUR_OWN_GITHUB_SECRET'
 ```
 
 ## App Info
